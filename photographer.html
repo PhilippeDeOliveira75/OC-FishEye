@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
+
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
@@ -9,29 +10,76 @@
   </head>
   <body>
     <header>
-      <img src="assets/images/logo.png" class="logo" />
+      <img src="assets/images/logo.png" class="logo" alt="Fisheye logo" />
     </header>
     <main id="main">
       <div class="photograph-header">
         <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
       </div>
+      <div class="filter-container">
+        <p>Trier par</p>
+        <div class="filter-choice" role="menu" aria-label="Options de tri">
+          <button class="active-choice" tabindex="0" aria-haspopup="true">
+            <span>Popularité</span>
+            <img class="chevron" src="assets/icons/chevron.svg" alt="chevron icon"/>
+          </button>
+          <div class="select-choice">
+            <span class="choice" tabindex="0" role="menuitem" aria-label="Trier par popularité">Popularité</span>
+            <span class="choice" tabindex="0" role="menuitem" aria-label="Trier par date">Date</span>
+            <span class="choice" tabindex="0" role="menuitem" aria-label="Trier par titre">Titre</span>
+          </div>
+        </div>
+      </div>
+      <section class="gallery" id="gallery">
+      </section>
     </main>
-    <div id="contact_modal">
-			<div class="modal">
-				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
-        </header>
-				<form>
+      <div id="contact_modal">
+      	<div class="modal">
+      		<header id="header">
+            <img src="assets/icons/close.svg" alt="Close icon" onclick="closeModal()" />
+          </header>
+				  <form id="contact_form" onsubmit="submit(e)">
 					<div>
-						<label>Prénom</label>
-						<input />
+						<label for="firstName">Prénom</label>
+						<input                   
+            class="text-control"
+            type="text"
+            id="firstName"
+            name="firstName"
+            />
+            <span class="errMsg" id="firstNameErrorMsg"></span>
+            <label for="lastName">Nom</label>
+						<input                   
+            class="text-control"
+            type="text"
+            id="lastName"
+            name="lastName"
+            />
+            <span class="errMsg" id="lastNameErrorMsg"></span>
+            <label for="email">Email</label>
+						<input 
+            class="text-control"
+            type="email"
+            id="email"
+            name="email"
+            autocomplete="on"
+            />
+            <span class="errMsg" id="emailErrorMsg"></span>
+            <label for="message">Votre message</label>
+						<input 
+            class="text-control"
+            type="text"
+            id="message"
+            name="message"/>
+            <span class="errMsg" id="messageErrorMsg"></span>
 					</div>
           <button class="contact_button">Envoyer</button>
-				</form>
-			</div>
-		</div>
-    <script src="/scripts/pages/photographer.js"></script>
+				  </form>
+			  </div>
+		  </div>
+    <script src="/scripts/pages/photographer.js" type="module"></script>
     <script src="/scripts/utils/contactForm.js"></script>
+    <script src="/scripts/utils/dropDownSort.js" type="module"></script>
+    <script src="/scripts/utils/gallery.js" type="module"></script>
   </body>
 </html>
