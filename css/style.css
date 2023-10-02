@@ -88,23 +88,3 @@ h1 {
     font-size: 15px;
     font-weight: lighter;
 }
-
-.text-control {
-    margin: 0;
-    padding: 8px;
-    width: 100%;
-    border-radius: 8px;
-    font-size: 30px;
-    height: 48px;
-  }
-
-.errMsg {
-    font-size: 25px;
-    color: #f20707;
-    display: block;
-    margin-top: 15px;
-    margin-bottom: 15px;
-    text-align: right;
-    line-height: 0.3;
-    transition: 0.3s;
-}

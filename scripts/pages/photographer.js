@@ -1,8 +1,10 @@
-import { dropDown } from "../utils/dropDownSort.js";
-import { bottomBanner } from "../utils/bottomBanner.js";
-import { getPhotographer, getMedia} from "../utils/data.js";
-import { header } from "../templates/headerPhotographer.js";
-import { displayGallery } from "../utils/gallery.js";
+import { dropDown } from "../utils/dropDownSort.js"
+import { bottomBanner } from "../utils/bottomBanner.js"
+import { getPhotographer, getMedia} from "../utils/data.js"
+import { header } from "../templates/headerPhotographer.js"
+import { displayGallery } from "../utils/gallery.js"
+import { displayCarrousel, closeCarrousel, navigationCarrousel } from "../utils/carrousel.js"
+
 
 
 export let photograph = await getPhotographer()
@@ -14,6 +16,10 @@ async function init () {
     dropDown()
     displayGallery(media)
     bottomBanner(photograph)
+    displayCarrousel()
+    closeCarrousel()
+    navigationCarrousel()
+
 }
 
 init()

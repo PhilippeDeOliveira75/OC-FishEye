@@ -1,10 +1,10 @@
 export function totalLikes() {
 
-    document.querySelectorAll('#totalLikes').forEach(e => e.remove());
+    document.querySelectorAll('#totalLikes').forEach(e => e.remove())
 
     let totalLikes = 0;
     document.querySelectorAll('#like')
-    .forEach(e => totalLikes += Number(e.textContent));
+    .forEach(e => totalLikes += Number(e.textContent))
 
     const likeSum = document.createElement('p')
     likeSum.textContent = totalLikes
@@ -14,7 +14,6 @@ export function totalLikes() {
     likesNumberAndHeart.appendChild(likeSum)
 
     return totalLikes;
-    
 
 }
 
@@ -37,7 +36,7 @@ export function bottomBanner(data) {
 
     const pricePerDay = document.createElement('p')
     pricePerDay.classList.add('price-per-day')
-    pricePerDay.textContent = `${data.price} $ / jour`;
+    pricePerDay.textContent = `${data.price} $ / jour`
     bottomBanner.appendChild(pricePerDay)
 
     totalLikes()

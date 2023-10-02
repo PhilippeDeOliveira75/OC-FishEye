@@ -4,7 +4,7 @@ export function dropDown (){
     const dropDown = document.querySelector('.active-choice')
     const selected = document.querySelector('.active-choice span')
     const optionArray = document.querySelectorAll('.choice')
-    const dropdownSelect = document.querySelector('.active-choice select');
+    const dropdownSelect = document.querySelector('.active-choice select')
 
     dropDown.addEventListener('mouseover', () => {
         

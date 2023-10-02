@@ -33,10 +33,15 @@
       <section class="gallery" id="gallery">
       </section>
     </main>
+      <div id="carrousel">
+      </div>
       <div id="contact_modal">
       	<div class="modal">
       		<header id="header">
-            <img src="assets/icons/close.svg" alt="Close icon" onclick="closeModal()" />
+            <div class= "contactMe">
+              <p>Contactez-moi</p>
+              <img id= closeIcon src="assets/icons/close.svg" alt="Close icon" onclick="closeModal()" />
+            </div>
           </header>
 				  <form id="contact_form" onsubmit="submit(e)">
 					<div>
@@ -81,5 +86,6 @@
     <script src="/scripts/utils/contactForm.js"></script>
     <script src="/scripts/utils/dropDownSort.js" type="module"></script>
     <script src="/scripts/utils/gallery.js" type="module"></script>
+    <script src="/scripts/utils/carrousel.js" type="module"></script>
   </body>
 </html>
