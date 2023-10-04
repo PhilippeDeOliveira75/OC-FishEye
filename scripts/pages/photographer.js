@@ -3,7 +3,7 @@ import { bottomBanner } from "../utils/bottomBanner.js"
 import { getPhotographer, getMedia} from "../utils/data.js"
 import { header } from "../templates/headerPhotographer.js"
 import { displayGallery } from "../utils/gallery.js"
-import { displayCarrousel, closeCarrousel, navigationCarrousel } from "../utils/carrousel.js"
+import { displayCarrousel } from "../utils/carrousel.js"
 
 
 
@@ -17,9 +17,6 @@ async function init () {
     displayGallery(media)
     bottomBanner(photograph)
     displayCarrousel()
-    closeCarrousel()
-    navigationCarrousel()
-
-}
+}   
 
 init()

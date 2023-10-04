@@ -42,12 +42,15 @@ export class card {
             const cardImg = document.createElement('img')
             cardImg.setAttribute("src", `assets/gallery/${this.id}/${this.path}`)
             cardImg.setAttribute("alt", this.title)
+            cardImg.classList.add('galleryCardImg')
             galleryCard.appendChild(cardImg)
     
         } else if (this.dataCard.video) {
             const cardVideo = document.createElement('video');
             cardVideo.setAttribute("src", `assets/gallery/${this.id}/${this.path}`);
             cardVideo.setAttribute("alt", this.title);
+            cardVideo.classList.add('galleryCardImg')
+            cardVideo.classList.add('galleryCardVideo')
             galleryCard.appendChild(cardVideo);
         }
     

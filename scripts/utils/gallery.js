@@ -1,5 +1,6 @@
 import { card } from "../class/card.js"
 import { media } from "../pages/photographer.js"
+import { displayCarrousel } from "./carrousel.js"
 
 export function displayGallery(media) {
     document.querySelectorAll('.galleryCard').forEach(e => e.remove())
@@ -45,5 +46,6 @@ export function sortMediaBy(value) {
     }
 
     displayGallery(sortedArray)
+    displayCarrousel()
   }
 
