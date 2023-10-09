@@ -8,18 +8,20 @@
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
     <title>Fisheye - photographe </title>
   </head>
-  <body>
+  <body id="body">
     <header>
-      <img src="assets/images/logo.png" class="logo" alt="Fisheye logo" />
+      <a href="index.html" aria-label="page d'accueil Fisheye">
+        <img src="assets/images/logo.png" class="logo" alt="fisheye logo"/>
+      </a>
     </header>
     <main id="main">
       <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+        <button type="button" aria-haspopup="dialog" aria-controls="dialog" class="contact_button" >Contactez-moi</button>
       </div>
       <div class="filter-container">
         <p>Trier par</p>
         <div class="filter-choice" role="menu" aria-label="Options de tri">
-          <button class="active-choice" tabindex="0" aria-haspopup="true">
+          <button class="active-choice"   >
             <span>Popularité</span>
             <img class="chevron" src="assets/icons/chevron.svg" alt="chevron icon"/>
           </button>
@@ -30,18 +32,18 @@
           </div>
         </div>
       </div>
-      <section class="gallery" id="gallery">
+      <section id="gallery" class="gallery">
       </section>
     </main>
-      <div id="contact_modal">
-      	<div class="modal">
-      		<header id="header">
-            <div class= "contactMe">
-              <p>Contactez-moi</p>
-              <img id= closeIcon src="assets/icons/close.svg" alt="Close icon" onclick="closeModal()" />
-            </div>
-          </header>
-				  <form id="contact_form" onsubmit="submit(e)">
+    <div id="dialog" role="dialog" aria-labelledby="dialog-title" aria-describedby="dialog-desc" aria-modal="true" aria-hidden="true" tabindex="-1" >
+      <div class="modal" role="document">
+        <div id= "contactMe">
+          <p>Contactez-moi</p>
+        </div>
+        <button id= closeIcon type="button" aria-label="Fermer" title="Fermer cette fenêtre modale" data-dismiss="dialog" >
+          <img src="assets/icons/close.svg" alt="Close icon"/>
+        </button>
+				<form id="contact_form" onsubmit="submit(event)">
 					<div>
 						<label for="firstName">Prénom</label>
 						<input                   
@@ -77,13 +79,17 @@
             <span class="errMsg" id="messageErrorMsg"></span>
 					</div>
           <button class="contact_button">Envoyer</button>
-				  </form>
-			  </div>
-		  </div>
+				</form>
+			</div>
+		</div>
+    <div id="carrouselContainer" role="dialog" aria-labelledby="carrousel" aria-describedby="carrousel d'images" aria-hidden="true" tabindex="-1">
+    </div>
+
     <script src="/scripts/pages/photographer.js" type="module"></script>
     <script src="/scripts/utils/contactForm.js"></script>
     <script src="/scripts/utils/dropDownSort.js" type="module"></script>
     <script src="/scripts/utils/gallery.js" type="module"></script>
     <script src="/scripts/utils/carrousel.js" type="module"></script>
+    
   </body>
 </html>

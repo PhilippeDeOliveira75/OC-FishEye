@@ -3,19 +3,26 @@ import { media } from "../pages/photographer.js"
 import { displayCarrousel } from "./carrousel.js"
 
 export function displayGallery(media) {
-    document.querySelectorAll('.galleryCard').forEach(e => e.remove())
-  
-    media.forEach(data => {
+  document.querySelectorAll('.galleryCard').forEach(e => e.remove())
+
+  media.forEach(data => {
       let tmp = new card(data)
       tmp.displayCard()
       tmp.updateLike()
-    });
+  });
 
-    document.querySelectorAll('.choice').forEach(e => e.addEventListener('click', () => {
-        sortMediaBy(e.textContent)
-    }))
+  document.querySelectorAll('.choice').forEach(e => {
+      e.addEventListener('click', () => {
+          sortMediaBy(e.textContent)
+      })
 
-  }
+      e.addEventListener('keydown', event => {
+          if (event.key === 'Enter') {
+              sortMediaBy(e.textContent)
+          }
+      })
+  })
+}
   
 export function sortMediaBy(value) {
     

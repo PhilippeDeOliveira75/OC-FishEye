@@ -17,6 +17,8 @@ export class card {
     likeCount () {
         const cardLike = document.createElement('p')
         cardLike.setAttribute("id", "like" )
+        cardLike.setAttribute("aria-label", `${this.likes} likes`)
+        cardLike.setAttribute("tabindex", "0")
         cardLike.textContent = this.likes
 
         return cardLike
@@ -27,6 +29,8 @@ export class card {
         cardIconLike.setAttribute("id", "heart" )
         cardIconLike.setAttribute("src", "assets/icons/heart.svg")
         cardIconLike.setAttribute("alt", "likes")
+        cardIconLike.setAttribute("aria-label", `Ajouter ou retirer un like`)
+        cardIconLike.setAttribute("tabindex", "0")
 
         return cardIconLike
     }
@@ -42,6 +46,8 @@ export class card {
             const cardImg = document.createElement('img')
             cardImg.setAttribute("src", `assets/gallery/${this.id}/${this.path}`)
             cardImg.setAttribute("alt", this.title)
+            cardImg.setAttribute("aria-label", this.title)
+            cardImg.setAttribute("tabindex", "0")
             cardImg.classList.add('galleryCardImg')
             galleryCard.appendChild(cardImg)
     
@@ -49,6 +55,8 @@ export class card {
             const cardVideo = document.createElement('video');
             cardVideo.setAttribute("src", `assets/gallery/${this.id}/${this.path}`);
             cardVideo.setAttribute("alt", this.title);
+            cardVideo.setAttribute("aria-label", this.title)
+            cardVideo.setAttribute("tabindex", "0")
             cardVideo.classList.add('galleryCardImg')
             cardVideo.classList.add('galleryCardVideo')
             galleryCard.appendChild(cardVideo);
@@ -68,7 +76,6 @@ export class card {
     
 
         likeAndHeart.appendChild(this.likeCount);
-
         likeAndHeart.appendChild(this.iconHeart);
         
         return galleryCard
@@ -91,6 +98,21 @@ export class card {
                 this.iconHeart.classList.add('liked');
             }
             totalLikes()
+        })
+    
+        this.iconHeart.addEventListener('keydown', event => {
+            if (event.key === 'Enter') {
+                if (this.iconHeart.classList.contains('liked')) {
+                    this.likes--;
+                    this.likeCount.textContent = this.likes;
+                    this.iconHeart.classList.remove('liked');
+                } else {
+                    this.likes++;
+                    this.likeCount.textContent = this.likes;
+                    this.iconHeart.classList.add('liked');
+                }
+                totalLikes()
+            }
         })
     }
 } 

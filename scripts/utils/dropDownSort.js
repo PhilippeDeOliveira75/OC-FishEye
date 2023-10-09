@@ -4,10 +4,8 @@ export function dropDown (){
     const dropDown = document.querySelector('.active-choice')
     const selected = document.querySelector('.active-choice span')
     const optionArray = document.querySelectorAll('.choice')
-    const dropdownSelect = document.querySelector('.active-choice select')
 
-    dropDown.addEventListener('mouseover', () => {
-        
+    dropDown.addEventListener('click', () => { 
         chevron.classList.add('active')
         menu.classList.add('active')
         optionArray.forEach(e => {
@@ -19,13 +17,8 @@ export function dropDown (){
             }
             selectedClick(e, selected, menu,chevron)
         })
-
     })
 
-    dropDown.addEventListener('click', () => {
-        menu.classList.remove('active')
-        console.log('click')
-    })
     document.querySelector('.filter-choice').addEventListener('mouseleave', () => {
         chevron.classList.remove('active')
         menu.classList.remove('active')
@@ -37,6 +30,14 @@ function selectedClick (e, button, menu, chevron){
         button.textContent = e.textContent
         chevron.classList.remove('active')
         menu.classList.remove('active')
+    })
+
+    e.addEventListener('keydown', event => {
+        if (event.key === 'Enter') {
+            button.textContent = e.textContent
+            chevron.classList.remove('active')
+            menu.classList.remove('active')
+        }
     })
 }
 

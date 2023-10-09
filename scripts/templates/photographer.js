@@ -4,18 +4,19 @@ function photographerTemplate(data) {
     const picture = `assets/photosID/${portrait}`
 
     function getUserCardDOM() {
-        
-        const article = document.createElement('article')
 
         const linkProfile = document.createElement('a')
         linkProfile.setAttribute('href', './photographer.html?id=' + id)
+        linkProfile.setAttribute('aria-label', `lien vers la page du photographe  ${name}  ${city}  ${country}  ${tagline}  ${price} euro par jour`)
+
+        const article = document.createElement('article')
 
         const img = document.createElement('img')
         img.setAttribute("src", picture)
-        img.setAttribute("alt", name)
+        img.setAttribute("alt", `portrait ${name}`)
 
         const namePhotographer = document.createElement('h2')
-        namePhotographer.textContent = name
+        namePhotographer.textContent = name     
 
         const location = document.createElement('p')
         location.classList.add('location')
@@ -30,14 +31,14 @@ function photographerTemplate(data) {
         priceByDay.classList.add('price')
         priceByDay.textContent = price + '€/jour'
 
-        article.appendChild(linkProfile)
-        linkProfile.appendChild(img)
-        linkProfile.appendChild(namePhotographer)
+        linkProfile.appendChild(article)
+        article.appendChild(img)
+        article.appendChild(namePhotographer)
         article.appendChild(location)
         article.appendChild(tags)
         article.appendChild(priceByDay)
         
-        return (article)
+        return (linkProfile)
     }
-    return { name, picture, getUserCardDOM }
+    return { name, picture, getUserCardDOM}
 }
