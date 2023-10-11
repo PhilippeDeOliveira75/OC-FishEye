@@ -16,7 +16,7 @@
     </header>
     <main id="main">
       <div class="photograph-header">
-        <button type="button" aria-haspopup="dialog" aria-controls="dialog" class="contact_button" >Contactez-moi</button>
+        <button type="button" aria-haspopup="dialog" aria-controls="dialog" aria-label="Contactez-moi" class="contact_button" >Contactez-moi</button>
       </div>
       <div class="filter-container">
         <p>Trier par</p>
@@ -26,9 +26,9 @@
             <img class="chevron" src="assets/icons/chevron.svg" alt="chevron icon"/>
           </button>
           <div class="select-choice">
-            <span class="choice" tabindex="0" role="menuitem" aria-label="Trier par popularité">Popularité</span>
-            <span class="choice" tabindex="0" role="menuitem" aria-label="Trier par date">Date</span>
-            <span class="choice" tabindex="0" role="menuitem" aria-label="Trier par titre">Titre</span>
+            <span class="choice" tabindex="-1" role="menuitem" aria-label="Trier par popularité">Popularité</span>
+            <span class="choice" tabindex="-1" role="menuitem" aria-label="Trier par date">Date</span>
+            <span class="choice" tabindex="-1" role="menuitem" aria-label="Trier par titre">Titre</span>
           </div>
         </div>
       </div>
@@ -43,42 +43,46 @@
         <button id= closeIcon type="button" aria-label="Fermer" title="Fermer cette fenêtre modale" data-dismiss="dialog" >
           <img src="assets/icons/close.svg" alt="Close icon"/>
         </button>
-				<form id="contact_form" onsubmit="submit(event)">
+				<form id="contact_form" method="get" onsubmit="return validate();">
 					<div>
-						<label for="firstName">Prénom</label>
-						<input                   
+						<label for="firstName" aria-label="Prénom" tabindex="0">Prénom</label>
+						<input   
+            aria-label="Entrez votre prénom"      
             class="text-control"
             type="text"
             id="firstName"
             name="firstName"
             />
-            <span class="errMsg" id="firstNameErrorMsg"></span>
-            <label for="lastName">Nom</label>
-						<input                   
+            <span class="errMsg" id="firstNameErrorMsg" tabindex="-1"></span>
+            <label for="lastName" aria-label="Nom" tabindex="0">Nom</label>
+						<input     
+            aria-label="Entrez votre nom"                
             class="text-control"
             type="text"
             id="lastName"
             name="lastName"
             />
-            <span class="errMsg" id="lastNameErrorMsg"></span>
-            <label for="email">Email</label>
+            <span class="errMsg" id="lastNameErrorMsg" tabindex="-1"></span>
+            <label for="email" aria-label="email" tabindex="0">Email</label>
 						<input 
+            aria-label="Entrez votre email"
             class="text-control"
             type="email"
             id="email"
             name="email"
             autocomplete="on"
             />
-            <span class="errMsg" id="emailErrorMsg"></span>
-            <label for="message">Votre message</label>
+            <span class="errMsg" id="emailErrorMsg" tabindex="-1"></span>
+            <label for="message" aria-label="Votre message" tabindex="0">Votre message</label>
 						<input 
+            aria-label="Entrez votre message"
             class="text-control"
             type="text"
             id="message"
             name="message"/>
-            <span class="errMsg" id="messageErrorMsg"></span>
+            <span class="errMsg" id="messageErrorMsg" tabindex="-1"></span>
 					</div>
-          <button class="contact_button">Envoyer</button>
+          <button id="validationButton" aria-label="Validez votre formulaire" class="contact_button">Envoyer</button>
 				</form>
 			</div>
 		</div>

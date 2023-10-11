@@ -43,7 +43,7 @@ export class card {
         gallery.appendChild(galleryCard)
                     
         if (this.dataCard.image) {
-            const cardImg = document.createElement('img')
+            const cardImg = document.createElement('img') 
             cardImg.setAttribute("src", `assets/gallery/${this.id}/${this.path}`)
             cardImg.setAttribute("alt", this.title)
             cardImg.setAttribute("aria-label", this.title)

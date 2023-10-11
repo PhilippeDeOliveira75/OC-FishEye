@@ -6,9 +6,7 @@ export function header(photographerData) {
     const article = document.getElementsByClassName('photograph-header')[0]
 
     const button = document.getElementsByClassName('contact_button')[0]
-
-
-            
+  
     const infoPhotographer = document.createElement('div')
     infoPhotographer.classList.add('info-photographer')
     infoPhotographer.setAttribute("tabindex", "0")
@@ -29,7 +27,6 @@ export function header(photographerData) {
     const imgPhotographer = document.createElement('img')
     imgPhotographer.setAttribute("src", picture)
     imgPhotographer.setAttribute("alt", photographerData.name)
-
 
     imgPhotographer.setAttribute("tabindex", "0")
     imgPhotographer.setAttribute("aria-label", `portrait de ${photographerData.name}`)  

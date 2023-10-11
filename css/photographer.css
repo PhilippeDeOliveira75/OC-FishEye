@@ -379,6 +379,8 @@ form input {
 
 #carrousel {
     display: none;
+    align-items: center;
+    justify-content: center;
     position: fixed;
     width: 100%;
     height: 100%;
@@ -394,15 +396,25 @@ form input {
         
 .close-carrousel {
     position: absolute;
-    top: 50px;
+    top: 40px;
     right: 100px;
 }
 
 .media-container {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     height: 100%;
+    flex-direction: column;
+}
+
+.media-title {
+    all: unset;
+    color: #901C1C;
+    font-size: 24px;
+    font-weight: lighter;
+    margin-bottom: 10px;
+    margin-top: 10px;
 }
 
 .image-carrousel {
@@ -411,12 +423,12 @@ form input {
 
 .chevron-left {
     position: absolute;
-    top: 50%;
+    top: 40%;
     left: 100px;
 }
 
 .chevron-right {
     position: absolute;
-    top: 50%;
+    top: 40%;
     right: 100px;
 }

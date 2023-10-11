@@ -15,17 +15,20 @@ export function dropDown (){
             else{
                 e.style.display = 'block'
             }
+            e.setAttribute('tabindex', '0')
             selectedClick(e, selected, menu,chevron)
+            e.addEventListener('keydown', event => { 
+                if (event.key === 'Tab' && e === optionArray[optionArray.length - 1]) {
+                    optionArray[0].focus() 
+                }
+            })
         })
     })
-
-    document.querySelector('.filter-choice').addEventListener('mouseleave', () => {
-        chevron.classList.remove('active')
-        menu.classList.remove('active')
-    })
+    
 }
 
 function selectedClick (e, button, menu, chevron){
+
     e.addEventListener('click', () => {
         button.textContent = e.textContent
         chevron.classList.remove('active')
@@ -37,6 +40,7 @@ function selectedClick (e, button, menu, chevron){
             button.textContent = e.textContent
             chevron.classList.remove('active')
             menu.classList.remove('active')
+
         }
     })
 }
