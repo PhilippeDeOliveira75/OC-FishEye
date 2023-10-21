@@ -6,22 +6,24 @@ const focusableElementsArray = [
   'input:not([disabled])',
   'textarea:not([disabled])',
   '[tabindex]:not([tabindex="-1"])',
-];
+]
+
 const keyCodes = {
   tab: 9,
   enter: 13,
   escape: 27,
-};
+}
+
+//Permet de garder le focus dans la modale
 
 const open = function (dialog) {
-  const focusableElements = dialog.querySelectorAll(focusableElementsArray);
-  const firstFocusableElement = focusableElements[0];
-  const lastFocusableElement = focusableElements[focusableElements.length - 1];
+  const focusableElements = dialog.querySelectorAll(focusableElementsArray)
+  const firstFocusableElement = focusableElements[0]
+  const lastFocusableElement = focusableElements[focusableElements.length - 1]
 
   dialog.setAttribute('aria-hidden', false);
   doc.setAttribute('aria-hidden', true);
 
-  // return if no focusable element
   if (!firstFocusableElement) {
     return;
   }
@@ -29,7 +31,6 @@ const open = function (dialog) {
   window.setTimeout(() => {
     firstFocusableElement.focus();
 
-    // trapping focus inside the dialog
     focusableElements.forEach((focusableElement) => {
       if (focusableElement.addEventListener) {
         focusableElement.addEventListener('keydown', (event) => {
@@ -57,18 +58,17 @@ const open = function (dialog) {
 };
 
 const close = function (dialog, trigger) {
-  dialog.setAttribute('aria-hidden', true);
-  doc.setAttribute('aria-hidden', false);
+  dialog.setAttribute('aria-hidden', true)
+  doc.setAttribute('aria-hidden', false)
 
-  // restoring focus
-  trigger.focus();
-};
+  trigger.focus()
+}
 
 triggers.forEach((trigger) => {
   const dialog = document.getElementById(trigger.getAttribute('aria-controls'));
   const dismissTriggers = dialog.querySelectorAll('[data-dismiss]');
 
-  // open dialog
+  // ouvre dialog
   trigger.addEventListener('click', (event) => {
     event.preventDefault();
 
@@ -83,30 +83,31 @@ triggers.forEach((trigger) => {
     }  
   });
 
-  // close dialog
+  // ferme dialog
   dialog.addEventListener('keydown', (event) => {
     if (event.which === keyCodes.escape) {
-      close(dialog, trigger);
+      close(dialog, trigger)
     }      
-  });
+  })
 
   dismissTriggers.forEach((dismissTrigger) => {
     const dismissDialog = document.getElementById(dismissTrigger.dataset.dismiss);
 
     dismissTrigger.addEventListener('click', (event) => {
-      event.preventDefault();
+      event.preventDefault()
 
-      close(dismissDialog, trigger);
-    });
-  });
+      close(dismissDialog, trigger)
+    })
+  })
 
   window.addEventListener('click', (event) => {
     if (event.target === dialog) {
-      close(dialog, trigger);
+      close(dialog, trigger)
     }
-  }); 
-});
+  })
+})
 
+//On récupère le h1 de la page pour le mettre dans le titre de la modale (on a besoin d'un timeout afin d'attendre que le code soit chargé)
 
 setTimeout(() => {
   let h1 = document.querySelector("h1")
@@ -120,17 +121,17 @@ setTimeout(() => {
 }, 1000)
 
 
-// Identification of firstName input
+// Identification du firstName input
 document.querySelector('#firstName').addEventListener("input", () => {
   verificationName('#firstName', /^[A-Za-zÀ-ÖØ-öø-ÿ\s-]+$/, '#firstNameErrorMsg')
 })
   
-// Identification of lastName input
+// Identification du lastName input
 document.querySelector('#lastName').addEventListener("input", () => {
   verificationName('#lastName', /^[A-Za-zÀ-ÖØ-öø-ÿ\s-]+$/, '#lastNameErrorMsg')
 })
 
-// Verification of firstName & lastName input
+// Verification du firstName & lastName input
 function verificationName(inputSelector, regex, errorMsgSelector) {
 const input = document.querySelector(inputSelector)
 const errMsg = document.querySelector(errorMsgSelector)
@@ -160,12 +161,12 @@ if (input.value.trim() === '') {
 }
 }
 
-// Identification of email input
+// Identification de l'email input
 document.querySelector('#email').addEventListener("input", () => {
   verificationEmail('#email', '#emailErrorMsg')
 })
   
-// Verification of email input
+// Verification de l'email input
 function verificationEmail(inputSelector) {
   const input = document.querySelector(inputSelector)
   const errMsg = document.querySelector('#emailErrorMsg')
@@ -184,7 +185,7 @@ function verificationEmail(inputSelector) {
   }
 }
 
-// Identification of message input
+// Identification du message input
 document.querySelector('#message').addEventListener("input", () => {
 verificationInput('#message', "^[-a-zA-ZÀ-ÿ' ]+$")
 })
@@ -212,7 +213,7 @@ function verificationInput(inputSelector) {
   }
 }
 
-// Verification of all inputs
+// Verification de tous les inputs
 function validate() {
 
   const firstNameValid = verificationName('#firstName', /^[A-Za-zÀ-ÖØ-öø-ÿ\s-]+$/, '#firstNameErrorMsg')
@@ -226,6 +227,8 @@ function validate() {
   }
   return true
 }
+
+// Soumission du formulaire
 
 document.querySelector('#contact_form').addEventListener('submit', function (event) {
   const validationButton = document.querySelector('#validationButton')

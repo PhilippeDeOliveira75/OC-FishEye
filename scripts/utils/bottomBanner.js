@@ -1,3 +1,5 @@
+//fonction de calcul du nombre de likes total photographer.js
+
 export function totalLikes() {
 
     document.querySelectorAll('#totalLikes').forEach(e => e.remove())
@@ -9,8 +11,6 @@ export function totalLikes() {
     const likeSum = document.createElement('p')
     likeSum.textContent = totalLikes
     likeSum.setAttribute("id", "totalLikes")
-    likeSum.setAttribute("aria-label", `total likes ${totalLikes} `)
-    likeSum.setAttribute("tabindex", "0")
 
     const likesNumberAndHeart = document.querySelector('.likes-number-and-heart')
     likesNumberAndHeart.appendChild(likeSum)
@@ -18,6 +18,9 @@ export function totalLikes() {
     return totalLikes;
 
 }
+
+
+//Création du bottomBanner photographer.js
 
 export function bottomBanner(data) {
 
@@ -39,8 +42,6 @@ export function bottomBanner(data) {
     const pricePerDay = document.createElement('p')
     pricePerDay.classList.add('price-per-day')
     pricePerDay.textContent = `${data.price} $ / jour`
-    pricePerDay.setAttribute("aria-label", `${data.price} euro par jour`)
-    pricePerDay.setAttribute("tabindex", "0")
     bottomBanner.appendChild(pricePerDay)
 
     totalLikes()

@@ -1,5 +1,7 @@
 import { totalLikes } from "../utils/bottomBanner.js"
 
+// Mise en place de la classe card
+
 export class card {
     constructor (dataCard) {
         this.id = dataCard.photographerId
@@ -11,8 +13,9 @@ export class card {
         this.likeCount = this.likeCount()
         this.iconHeart = this.iconHeart()
         this.article = this.createCard()
- 
     }
+
+    // Création de l'élément nombre de likes
 
     likeCount () {
         const cardLike = document.createElement('p')
@@ -24,6 +27,8 @@ export class card {
         return cardLike
     }
 
+    // Icone coeur
+
     iconHeart () {
         const cardIconLike = document.createElement('img')
         cardIconLike.setAttribute("id", "heart" )
@@ -34,6 +39,8 @@ export class card {
 
         return cardIconLike
     }
+
+    // Création de la card
 
     createCard () {
 
@@ -80,12 +87,15 @@ export class card {
         
         return galleryCard
 
-        }
+    }
 
     displayCard () {
         const gallery = document.getElementById('gallery')
         gallery.appendChild(this.article)
     }
+
+    // Fonction qui permet de mettre à jour le nombre de likes au click et touche entrée
+
     updateLike () {
         this.iconHeart.addEventListener('click', ()  => {
             if (this.iconHeart.classList.contains('liked')) {
@@ -115,4 +125,4 @@ export class card {
             }
         })
     }
-} 
+}

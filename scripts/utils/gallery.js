@@ -1,15 +1,11 @@
-import { card } from "../class/card.js"
+
+import { mediaFactory } from "../factory/mediaFactory.js"
 import { media } from "../pages/photographer.js"
 import { displayCarrousel } from "./carrousel.js"
 
-export function displayGallery(media) {
-  document.querySelectorAll('.galleryCard').forEach(e => e.remove())
+// Fonction qui affiche la galerie à l'ouverture de la page
 
-  media.forEach(data => {
-      let tmp = new card(data)
-      tmp.displayCard()
-      tmp.updateLike()
-  });
+export function filterGallery() {
 
   document.querySelectorAll('.choice').forEach(e => {
       e.addEventListener('click', () => {
@@ -23,6 +19,8 @@ export function displayGallery(media) {
       })
   })
 }
+
+// Fonction qui permet de trier la galerie
   
 export function sortMediaBy(value) {
     
@@ -52,7 +50,7 @@ export function sortMediaBy(value) {
       })
     }
 
-    displayGallery(sortedArray)
+    mediaFactory(sortedArray)
     displayCarrousel()
-  }
+}
 

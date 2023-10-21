@@ -1,3 +1,5 @@
+//Récupération de l'ensmeble des données (photographers et media)
+
 async function getData () {
     let data = await fetch("../../data/photographers.JSON")
           .then((res) => res.json())

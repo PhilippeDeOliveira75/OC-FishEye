@@ -1,6 +1,8 @@
 let galleryCardArray
 
-let index 
+let index
+
+//Création du carrousel
 
 export function displayCarrousel() {
 
@@ -64,6 +66,8 @@ export function displayCarrousel() {
 
     galleryCardArray = document.querySelectorAll('.galleryCardImg')
 
+    //fonction pour afficher le carrousel au clic ou press entrer sur la bonne image (on garde l'index de l'image cliquée)
+
     galleryCardArray.forEach((e, i) => {
         const main = document.querySelector('main')
         const header = document.querySelector('header')
@@ -91,6 +95,8 @@ export function displayCarrousel() {
     next(chevronRight, imageCarrousel, videoCarrousel)
 }
 
+
+
 function sortMediaBy(e, image, video, title) {
     let media = e.closest('.galleryCard').querySelector('.galleryCardImg')
 
@@ -99,7 +105,7 @@ function sortMediaBy(e, image, video, title) {
         video.style.display = 'block'
         image.style.display = 'none'
 
-        // Ajouter un écouteur d'événements "keydown" pour la touche "Espace"
+        // Lecture ou pause d'une vidéo avec la barre espace
         document.addEventListener('keydown', event => {
             if (event.key === ' ') {
                 if (video.paused) {
@@ -118,6 +124,8 @@ function sortMediaBy(e, image, video, title) {
     const mediaTitle = document.querySelector('.media-title')
     mediaTitle.textContent = title ? title : e.closest('.galleryCard').querySelector('h2').textContent
 }
+
+// Fermer le carrousel au clic, echap ou tabulation + entrée sur l'icone close
 
 function close (closeIcon, carrousel) {
     const main = document.querySelector('main')
@@ -140,6 +148,8 @@ function close (closeIcon, carrousel) {
         }
     })
 }
+
+// Navigation dans le carrousel au click, flêche, ou tabulation + entrée vers l'ement précédent
 
 function previous (a, b, c) {
     a.addEventListener('click', () => {
@@ -166,6 +176,8 @@ function previous (a, b, c) {
         }
     })
 }
+
+// Navigation dans le carrousel au click, flêche, ou tabulation + entrée vers l'ement suivant
 
 function next (a, b, c) {
     a.addEventListener('click', () => {

@@ -1,3 +1,5 @@
+//Creer un template pour chaque photographe (index.js)
+
 function photographerTemplate(data) {
 
     const { name, portrait, city, tagline, price, id, country } = data

@@ -1,3 +1,5 @@
+// Fonction qui permet d'afficher le menu déroulant de tri de la galerie
+
 export function dropDown (){
     const menu = document.querySelector('.select-choice')
     const chevron = document.querySelector('.chevron')
@@ -26,6 +28,8 @@ export function dropDown (){
     })
     
 }
+
+// Fonction qui permet de sélectionner une option du menu déroulant de tri de la galerie
 
 function selectedClick (e, button, menu, chevron){
 

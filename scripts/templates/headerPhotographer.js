@@ -1,8 +1,8 @@
+//Création du header photographer.js
 export function header(photographerData) {
 
     const picture = `assets/photosID/${photographerData.portrait}`
 
-    // Créer photographer-header (infos / contact-button / picture)
     const article = document.getElementsByClassName('photograph-header')[0]
 
     const button = document.getElementsByClassName('contact_button')[0]
