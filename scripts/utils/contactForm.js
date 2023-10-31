@@ -17,6 +17,7 @@ const keyCodes = {
 //Permet de garder le focus dans la modale
 
 const open = function (dialog) {
+  document.querySelector('#dialog').style.display = 'block';
   const focusableElements = dialog.querySelectorAll(focusableElementsArray)
   const firstFocusableElement = focusableElements[0]
   const lastFocusableElement = focusableElements[focusableElements.length - 1]
@@ -228,17 +229,23 @@ function validate() {
   return true
 }
 
-// Soumission du formulaire
+const inputs = document.querySelectorAll('#contact_form input, #contact_form textarea');
 
-document.querySelector('#contact_form').addEventListener('submit', function (event) {
-  const validationButton = document.querySelector('#validationButton')
-  event.preventDefault()
-  if (!validate()) {
-    validationButton.setAttribute('aria-label', 'Des erreurs ont été détectées dans le formulaire. Veuillez corriger les erreurs et soumettre à nouveau.')
-    event.preventDefault()
+function cleanInputs() {
+  inputs.forEach(input => {
+    input.value = '';
+  });
+}
 
-  } else {
-    const currentUrl = new URL(window.location.href)
-    window.location.href = currentUrl.href
-  }
-})
+document.querySelector('#validationButton').addEventListener('click', function (event) {
+        event.preventDefault()
+        if (!validate()) {
+          const validationButton = document.querySelector('#validationButton');
+          validationButton.setAttribute('aria-label', 'Des erreurs ont été détectées dans le formulaire. Veuillez corriger les erreurs et soumettre à nouveau.');
+        } else {
+          inputs.forEach(input => {
+            console.log(`${input.name}: ${input.value}`);
+          });
+          document.querySelector('#dialog').style.display = 'none';
+          cleanInputs()
+        }})
